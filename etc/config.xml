@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <hs_default_shipping_payment>
+            <shipping>
+                <enabled>1</enabled>
+                <autoselect_method/>
+                <fallback_method>first</fallback_method>
+            </shipping>
+            <payment>
+                <enabled>1</enabled>
+                <autoselect_method/>
+                <fallback_method>first</fallback_method>
+            </payment>
+        </hs_default_shipping_payment>
+    </default>
+</config>

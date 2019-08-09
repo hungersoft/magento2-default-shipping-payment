@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hs_default_shipping_payment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+            <label>Default Shipping &amp; Payment Methods</label>
+            <tab>hungersoft</tab>
+            <resource>HS_DefaultShippingPayment::config_hs_default_shipping_payment</resource>
+            <group id="shipping" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Shipping</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="autoselect_method" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Autoselect method</label>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allmethods</source_model>
+                </field>
+                <field id="fallback_method" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Fallback method</label>
+                    <comment>This shipping method is selected when the autoselect method doesn't exist</comment>
+                    <source_model>HS\DefaultShippingPayment\Model\Config\Source\FallbackMethod</source_model>
+                </field>
+            </group>
+            <group id="payment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Payment</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="autoselect_method" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Autoselect Method</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allmethods</source_model>
+                </field>
+                <field id="fallback_method" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Fallback method</label>
+                    <comment>This payment method is selected when the autoselect method doesn't exist</comment>
+                    <source_model>HS\DefaultShippingPayment\Model\Config\Source\FallbackMethod</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

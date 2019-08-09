@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="adminhtml_block_html_before">
+        <observer name="hs_default_shipping_payment_adminhtml_block_html_before_handler" instance="HS\DefaultShippingPayment\Observer\Register"/>
+    </event>
+</config>
