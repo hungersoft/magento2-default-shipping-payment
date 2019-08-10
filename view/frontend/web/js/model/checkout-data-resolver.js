@@ -17,7 +17,7 @@ define([
          */
         var resolveShippingRates = wrapper.wrap(
             checkoutDataResolver.resolveShippingRates,
-            function(originalResolveShippingRates, ratesData) {
+            function (originalResolveShippingRates, ratesData) {
                 if (!checkoutData.getSelectedShippingRate()
                     && !_.isUndefined(config.hsDefaultShippingPayment.shipping)
                     && _.size(ratesData) > 1
@@ -38,7 +38,7 @@ define([
          */
         var resolvePaymentMethod = wrapper.wrap(
             checkoutDataResolver.resolvePaymentMethod,
-            function(originalResolvePaymentMethod) {
+            function (originalResolvePaymentMethod) {
                 var availablePaymentMethods = paymentService.getAvailablePaymentMethods();
                 if (!checkoutData.getSelectedPaymentMethod()
                     && !_.isUndefined(config.hsDefaultShippingPayment.payment)
@@ -80,6 +80,10 @@ define([
                         matchedMethod = availableMethods[0];
                     } else if (fallbackMethod === 'last') {
                         matchedMethod = availableMethods[availableMethods.length - 1];
+                    } else if (fallbackMethod === 'lowest_price') {
+                        matchedMethod = _.min(availableMethods, function (method) {
+                            return method.amount;
+                        });
                     }
                 }
 

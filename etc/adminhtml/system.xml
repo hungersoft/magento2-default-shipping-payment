@@ -18,7 +18,7 @@
                 <field id="fallback_method" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
                     <label>Fallback method</label>
                     <comment>This shipping method is selected when the autoselect method doesn't exist</comment>
-                    <source_model>HS\DefaultShippingPayment\Model\Config\Source\FallbackMethod</source_model>
+                    <source_model>HS\DefaultShippingPayment\Model\Config\Source\FallbackMethodShipping</source_model>
                 </field>
             </group>
             <group id="payment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
