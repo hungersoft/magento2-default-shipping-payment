@@ -41,7 +41,7 @@ class CompositeConfigProvider implements ConfigProviderInterface
             $config['payment'] = $this->prepareConfig('payment');
         }
 
-        return ['hs_default_shipping_payment' => $config];
+        return ['hsDefaultShippingPayment' => $config];
     }
 
     /**
@@ -55,7 +55,7 @@ class CompositeConfigProvider implements ConfigProviderInterface
     {
         return [
             'autoselect' => $this->getConfigValue(sprintf('%s/autoselect_method', $type)),
-            'fallback' => $this->getConfigValue(sprintf('%s/autoselect_method', $type)),
+            'fallback' => $this->getConfigValue(sprintf('%s/fallback_method', $type)),
         ];
     }
 
