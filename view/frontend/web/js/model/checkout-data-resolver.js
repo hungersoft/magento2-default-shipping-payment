@@ -18,10 +18,7 @@ define([
         var resolveShippingRates = wrapper.wrap(
             checkoutDataResolver.resolveShippingRates,
             function (originalResolveShippingRates, ratesData) {
-                if (!checkoutData.getSelectedShippingRate()
-                    && !_.isUndefined(config.hsDefaultShippingPayment.shipping)
-                    && _.size(ratesData) > 1
-                ) {
+                if (!checkoutData.getSelectedShippingRate() && _.size(ratesData) > 1) {
                     var method = this.getMethod('shipping', ratesData);
                     if (!_.isUndefined(method)) {
                         selectShippingMethodAction(method);
@@ -40,10 +37,7 @@ define([
             checkoutDataResolver.resolvePaymentMethod,
             function (originalResolvePaymentMethod) {
                 var availablePaymentMethods = paymentService.getAvailablePaymentMethods();
-                if (!checkoutData.getSelectedPaymentMethod()
-                    && !_.isUndefined(config.hsDefaultShippingPayment.payment)
-                    && _.size(availablePaymentMethods) > 1
-                ) {
+                if (!checkoutData.getSelectedPaymentMethod() && _.size(availablePaymentMethods) > 1) {
                     var method = this.getMethod('payment', availablePaymentMethods);
                     if (!_.isUndefined(method)) {
                         selectPaymentMethodAction(method);
@@ -65,7 +59,7 @@ define([
              * @return {Object|undefined}
              */
             getMethod: function (type, availableMethods) {
-                var autoselectMethod = this.getAutoselectMethod(type),
+                var autoselectMethod = this.getMethodBySelectionType(type, 'autoselect'),
                     self = this;
                 var matchedMethod;
                 if (!_.isUndefined(autoselectMethod)) {
@@ -75,7 +69,7 @@ define([
                 }
 
                 if (!matchedMethod) {
-                    var fallbackMethod = this.getFallbackMethod(type);
+                    var fallbackMethod = this.getMethodBySelectionType(type, 'fallback');
                     if (fallbackMethod === 'first') {
                         matchedMethod = availableMethods[0];
                     } else if (fallbackMethod === 'last') {
@@ -96,20 +90,14 @@ define([
              * @param  {String} type
              * @return {String}
              */
-            getAutoselectMethod: function (type) {
-                return config.hsDefaultShippingPayment[type].autoselect;
+            getMethodBySelectionType: function (methodType, selectionType) {
+                if (!_.isUndefined(config.hsDefaultShippingPayment)
+                    && !_.isUndefined(config.hsDefaultShippingPayment[methodType])
+                ) {
+                    return config.hsDefaultShippingPayment[methodType][selectionType];
+                }
             },
-
-            /**
-             * Get fallback method by type
-             *
-             * @param  {String} type
-             * @return {String}
-             */
-            getFallbackMethod: function (type) {
-                return config.hsDefaultShippingPayment[type].fallback;
-            },
-
+            
             /**
              * Get method code
              *
