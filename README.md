@@ -3,7 +3,7 @@
 # Default Shipping & Payment Method [M2]
 **hs/module-default-shipping-payment**
 
-Hungersoft's [Default Shipping & Payment Method](https://www.hungersoft.com/p/magento2-product-default-shipping-payment) extension allows to pre-select default shipping and/or payment method in your Magento 2 admin.
+Hungersoft's [Default Shipping & Payment Method](https://www.hungersoft.com/p/magento2-default-shipping-payment) extension allows to pre-select default shipping and/or payment method in your Magento 2 admin.
 
 ## Installation
 
